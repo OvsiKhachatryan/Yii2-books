@@ -12,6 +12,7 @@ use Yii;
  */
 class Book extends \yii\db\ActiveRecord
 {
+    public $authorIds;
     /**
      * {@inheritdoc}
      */
@@ -27,6 +28,7 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'string', 'max' => 20],
+            ['authorIds', 'each', 'rule' => ['integer']]
         ];
     }
 
@@ -43,13 +45,13 @@ class Book extends \yii\db\ActiveRecord
 
     public function getAuthors()
     {
-        return $this->hasMany(Author::className(), ['id' => 'author_id'])
+        return $this->hasMany(Author::class, ['id' => 'author_id'])
             ->via('bookAuthors');
     }
 
     public function getBookAuthors()
     {
-        return $this->hasMany(BookAuthor::className(), ["book_id"=>"id"]);
+        return $this->hasMany(BookAuthor::class, ['book_id' => 'id']);
     }
 }
 

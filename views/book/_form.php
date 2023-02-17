@@ -17,9 +17,9 @@ use app\models\BookAuthor;
     <?php
         $form = ActiveForm::begin();
     ?>
-    <?= $form->field(new BookAuthor, 'author_id')->widget(Select2::classname(), [
+    <?= $form->field($model, 'authorIds')->widget(Select2::classname(), [
         'data' => ArrayHelper::map($authors, 'id', 'name'),
-        'name' => 'author_id',
+        'name' => 'authorIds',
         'maintainOrder' => true,
         'attribute' => 'id',
         'pluginOptions' => [

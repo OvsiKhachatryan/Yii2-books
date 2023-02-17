@@ -74,8 +74,7 @@ class BookController extends Controller
         $authors = Author::find()->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                $requestAuthors = $this->request->post()['BookAuthor']['author_id'];
-                foreach ($requestAuthors as $item) {
+                foreach ($model->authorIds as $item) {
                     $bookAuthor = new BookAuthor();
                     $bookAuthor->author_id = $item;
                     $bookAuthor->book_id = $model->id;
