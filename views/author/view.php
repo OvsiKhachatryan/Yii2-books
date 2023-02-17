@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
-use app\components\AuthorBooksWidget;
+use app\widgets\AuthorBooksWidget;
 
 /** @var yii\web\View $this */
 /** @var app\models\Author $model */
