@@ -40,5 +40,11 @@ class Book extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
+
+    public function getAuthors()
+    {
+        return $this->hasMany(Author::className(), ['id' => 'author_id'])
+            ->viaTable('books_authors', ['book_id' => 'id']);
+    }
 }
 

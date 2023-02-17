@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
+use app\components\AuthorBooksWidget;
 
 /** @var yii\web\View $this */
 /** @var app\models\Author $model */
@@ -35,22 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
         ],
     ]) ?>
-    <?php
-        $dataProvider = new \yii\data\ActiveDataProvider([
-            'query' => $model->getBooks(),
-            'pagination' => [
-                'pageSize' => 20,
-            ],
-        ]);
-    ?>
+
     <?=
-        GridView::widget([
-            'dataProvider' => $dataProvider,
-            'columns' => [
-                'id',
-                'name'
-            ],
-        ])
+    AuthorBooksWidget::widget(["author" => $model]);
     ?>
 
 </div>

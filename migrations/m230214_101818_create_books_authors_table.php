@@ -17,6 +17,25 @@ class m230214_101818_create_books_authors_table extends Migration
             'book_id' => $this->bigInteger()->unsigned(),
             'author_id' => $this->bigInteger()->unsigned()
         ]);
+
+        $this->addForeignKey(
+            'fk-book_authors-book_id',
+            'books_authors',
+            'book_id',
+            'books',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk-book_authors-author_id',
+            'books_authors',
+            'author_id',
+            'authors',
+            'id',
+            'CASCADE'
+        );
+
     }
 
     /**
